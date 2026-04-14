@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#0d631b",
+                    "on-secondary-fixed-variant": "#374b43",
+                    "on-primary-fixed": "#002204",
+                    "outline-variant": "#bfcaba",
+                    "surface-dim": "#d8dad9",
+                    "on-secondary-container": "#52675e",
+                    "inverse-surface": "#2e3130",
+                    "secondary-fixed": "#d1e8dd",
+                    "background": "#f8faf8",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e1e3e1",
+                    "surface": "#f8faf8",
+                    "primary-container": "#2e7d32",
+                    "on-tertiary-fixed": "#2e150b",
+                    "tertiary-fixed": "#ffdbcf",
+                    "surface-container": "#eceeec",
+                    "inverse-primary": "#88d982",
+                    "on-tertiary-container": "#ffeee8",
+                    "surface-bright": "#f8faf8",
+                    "tertiary-fixed-dim": "#ebbcac",
+                    "primary-fixed": "#a3f69c",
+                    "surface-container-highest": "#e1e3e1",
+                    "secondary-fixed-dim": "#b5ccc1",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#707a6c",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1b",
+                    "on-primary-container": "#cbffc2",
+                    "tertiary-container": "#8b6557",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f2f4f2",
+                    "tertiary": "#704d40",
+                    "surface-tint": "#1b6d24",
+                    "on-surface-variant": "#40493d",
+                    "on-secondary-fixed": "#0b1f18",
+                    "on-tertiary-fixed-variant": "#603f33",
+                    "secondary-container": "#cee5da",
+                    "inverse-on-surface": "#eff1ef",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "on-primary-fixed-variant": "#005312",
+                    "surface-container-high": "#e6e9e7",
+                    "secondary": "#4e635a",
+                    "on-surface": "#191c1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(180deg, #0d631b 0%, #2e7d32 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Integración SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-zinc-50 dark:bg-zinc-950 py-8 px-4 transition-all duration-200 ease-in-out">
+<div class="mb-10 px-2">
+<h1 class="font-headline font-black text-emerald-900 dark:text-emerald-50 text-xl">Lab Botánico</h1>
+<p class="font-headline uppercase tracking-wider text-[10px] text-zinc-500">Instalación Alpha</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-emerald-900 dark:text-emerald-400 font-bold border-r-4 border-emerald-700 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-headline uppercase tracking-wider text-xs">Panel de Control</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="Potted_plant">potted_plant</span>
+<span class="font-headline uppercase tracking-wider text-xs">Sala de Clones</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="agriculture">agriculture</span>
+<span class="font-headline uppercase tracking-wider text-xs">Sala de Producción</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-headline uppercase tracking-wider text-xs">Almacén/Bodega</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2 pt-8">
+<button class="w-full bg-emerald-900 text-white py-3 rounded-xl font-headline uppercase tracking-wider text-xs mb-6 active:scale-95 duration-150 transition-all">Acciones Rápidas</button>
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 hover:text-emerald-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-headline uppercase tracking-wider text-xs">Soporte</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 hover:text-emerald-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-headline uppercase tracking-wider text-xs">Registros</span>
+</a>
+</div>
+</aside>
+<!-- Contenido Principal -->
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- Integración TopNavBar -->
+<header class="flex justify-between items-center px-6 h-16 w-full bg-emerald-50 dark:bg-zinc-900 shadow-sm sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<span class="font-headline font-bold text-emerald-900 dark:text-emerald-50 text-lg hidden md:block">Cultivo de Alto Rendimiento</span>
+<div class="bg-zinc-100 dark:bg-zinc-800 rounded-full px-4 py-1.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-zinc-500 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-label w-48" placeholder="Buscar sensores..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-2 text-emerald-900 dark:text-emerald-400 font-headline font-semibold text-xs">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Sistemas Normales
+                </div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-zinc-600 dark:text-zinc-300" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-zinc-600 dark:text-zinc-300" data-icon="settings">settings</span>
+</button>
+<img alt="Perfil de usuario" class="w-8 h-8 rounded-full border-2 border-primary-container object-cover" data-alt="professional headshot of a facility manager in a clean white laboratory setting with soft architectural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU3dnBx7UQl1liPGy2S8D32OxlThvLLUKD0OIp9Bc-FcwQuBKAvI_dpMGlBy1JIveH7hxUHIrFPi4o0Wj6avKYr-PFrV3AlAT1CaGCY7uS6HHzf9yQl3hTlMtrYBWzFTO9yOvKuo8fX-_4gpM4MIrAh-CXU3g1IpH1GjnWZOEoFw31EIt8Cxs5ah0vmtGKYqnKqfSgFXmPogVT5uifnsA_BrmnDcXj5TOToxLcQeLJ3hJUmGb8HOLpFYy_dnJgtN2MljuO1BBPFmg"/>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-[1600px] mx-auto w-full">
+<!-- Sección de Encabezado del Panel -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label text-xs uppercase tracking-[0.1em] text-secondary font-semibold">Resumen Operativo</span>
+<h2 class="font-headline text-4xl font-extrabold text-on-surface mt-1">Inteligencia de Planta</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-lowest text-on-surface font-headline font-bold text-sm rounded-xl shadow-sm hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                        Exportar Reporte
+                    </button>
+<button class="px-4 py-2 bg-gradient-primary text-on-primary font-headline font-bold text-sm rounded-xl shadow-md active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                        Optimizar Sistema
+                    </button>
+</div>
+</section>
+<!-- Cuadrícula Bento de Métricas Clave -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Consumo de Energía -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="electric_bolt">electric_bolt</span>
+</div>
+<span class="font-label text-xs text-primary font-bold bg-primary-container/10 px-2 py-0.5 rounded-full">+2.4%</span>
+</div>
+<div class="mt-4">
+<p class="font-label text-xs text-on-surface-variant font-medium">Consumo Eléctrico</p>
+<h3 class="font-headline text-3xl font-bold text-on-surface">142.8 <span class="text-lg font-normal text-on-surface-variant">kW/h</span></h3>
+</div>
+</div>
+<!-- Humedad Promedio -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="humidity_percentage">humidity_percentage</span>
+</div>
+<span class="font-label text-xs text-secondary font-bold bg-secondary-container/30 px-2 py-0.5 rounded-full">Óptimo</span>
+</div>
+<div class="mt-4">
+<p class="font-label text-xs text-on-surface-variant font-medium">Humedad Prom. Instalación</p>
+<div class="flex items-center gap-4">
+<h3 class="font-headline text-3xl font-bold text-on-surface">58%</h3>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[58%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Niveles de Tanque de Agua -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-tertiary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="water_drop">water_drop</span>
+</div>
+<span class="font-label text-xs text-tertiary font-bold">Quedan 12h</span>
+</div>
+<div class="mt-4">
+<p class="font-label text-xs text-on-surface-variant font-medium">Niveles de Reserva</p>
+<h3 class="font-headline text-3xl font-bold text-on-surface">840 <span class="text-lg font-normal text-on-surface-variant">L</span></h3>
+<div class="mt-2 h-1 bg-surface-container rounded-full">
+<div class="bg-tertiary h-full w-[84%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Salud del Sistema -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<span class="flex items-center gap-1 font-label text-[10px] uppercase font-bold text-primary">
+                            Activo
+                        </span>
+</div>
+<div class="mt-4">
+<p class="font-label text-xs text-on-surface-variant font-medium">Salud General del Sistema</p>
+<h3 class="font-headline text-3xl font-bold text-on-surface">98.2%</h3>
+<p class="text-[10px] text-on-surface-variant mt-1 italic">Último diagnóstico: hace 4m</p>
+</div>
+</div>
+</section>
+<!-- Sección Interactiva Principal: Mapa y Alertas Recientes -->
+<section class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Vista de Mapa/Plano de Instalación -->
+<div class="xl:col-span-2 bg-surface-container-low rounded-xl p-6 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline text-xl font-bold text-on-surface">Plano de la Instalación</h3>
+<div class="flex gap-2 bg-surface-container-lowest p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-bold bg-primary text-on-primary rounded-md">Vista en Vivo</button>
+<button class="px-3 py-1 text-xs font-bold text-on-surface-variant hover:bg-surface-container transition-colors rounded-md">Mapa de Calor</button>
+</div>
+</div>
+<div class="relative w-full aspect-video bg-surface-container-highest rounded-xl overflow-hidden group">
+<div class="absolute inset-0 opacity-20 grayscale mix-blend-multiply pointer-events-none" data-alt="top-down blueprint schematic of a industrial hydroponic greenhouse with grid-like planting patterns" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtKWSSBVDUYHRLY07xjfRVzn_nrNGDjeU2TK8V0GtPovXTOJW2F_LLFL8HlCtWDjK2sWr4XRvN7Pr7Md1xapkH_uZtQsFGZdiufdqArdPljcsZCqp0TTsBNkIJNWaDjsqTHiru2jaTL0tk-B1-Y8-FHjtqWOkv0V74nlsOli4is4HY9e2Xn-hoblJKbA_U0n4S73XHMeWcPqUPX3kK96x-55H5py5AxUSVcwXi9KFrvgtxu3fdX2EHy6YWnpKNyU3NRP5oxgAm96Y'); background-size: cover;">
+</div>
+<!-- Nodos de Cuadrícula Interactivos -->
+<div class="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-4 p-8">
+<div class="border-2 border-primary/40 bg-primary/5 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-primary/10 transition-all hover:scale-[1.02]">
+<span class="font-label text-[10px] font-black text-primary uppercase">Zona A-1</span>
+<span class="font-headline text-lg font-bold">24.5°C</span>
+</div>
+<div class="border-2 border-primary/40 bg-primary/5 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-primary/10 transition-all hover:scale-[1.02]">
+<span class="font-label text-[10px] font-black text-primary uppercase">Zona A-2</span>
+<span class="font-headline text-lg font-bold">23.8°C</span>
+</div>
+<div class="border-2 border-error/40 bg-error/5 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-error/10 transition-all hover:scale-[1.02]">
+<span class="font-label text-[10px] font-black text-error uppercase">Zona B-1</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="border-2 border-primary/40 bg-primary/5 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-primary/10 transition-all hover:scale-[1.02]">
+<span class="font-label text-[10px] font-black text-primary uppercase">Zona B-2</span>
+<span class="font-headline text-lg font-bold">24.2°C</span>
+</div>
+<!-- Más zonas simplificadas visualmente -->
+<div class="col-span-2 row-span-2 border-2 border-secondary/20 bg-secondary/5 rounded-lg flex items-center justify-center cursor-pointer hover:bg-secondary/10 transition-all">
+<span class="font-headline font-bold text-secondary">Centro de Procesamiento</span>
+</div>
+<div class="border-2 border-primary/40 bg-primary/5 rounded-lg flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-primary" data-icon="sensors">sensors</span>
+</div>
+<div class="border-2 border-primary/40 bg-primary/5 rounded-lg flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-primary" data-icon="sensors">sensors</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Alertas Recientes y Tendencias de Temperatura -->
+<div class="flex flex-col gap-6">
+<!-- Alertas -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex-1">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline text-lg font-bold text-on-surface">Alertas Recientes</h3>
+<span class="text-[10px] font-bold text-error bg-error-container px-2 py-1 rounded">2 CRÍTICAS</span>
+</div>
+<div class="space-y-4">
+<div class="flex gap-3 items-start p-3 bg-error-container/20 rounded-xl">
+<span class="material-symbols-outlined text-error mt-0.5" data-icon="report">report</span>
+<div>
+<p class="font-headline text-sm font-bold text-on-error-container">Humedad Baja: Zona B-1</p>
+<p class="font-label text-xs text-on-surface-variant">La humedad relativa bajó del 35% a las 04:22 AM.</p>
+</div>
+</div>
+<div class="flex gap-3 items-start p-3 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-secondary mt-0.5" data-icon="info">info</span>
+<div>
+<p class="font-headline text-sm font-bold text-on-surface">Tanque CO2 Bajo</p>
+<p class="font-label text-xs text-on-surface-variant">Tanque de reserva activado. Programar recarga para Tanque 04.</p>
+</div>
+</div>
+<div class="flex gap-3 items-start p-3 bg-surface-container-low rounded-xl opacity-60">
+<span class="material-symbols-outlined text-zinc-400 mt-0.5" data-icon="check_circle">check_circle</span>
+<div>
+<p class="font-headline text-sm font-bold text-on-surface">Purga Programada Completada</p>
+<p class="font-label text-xs text-on-surface-variant">Nutrientes de Sala de Producción 2 normalizados.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tarjeta de Gráfico de Tendencias -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<h3 class="font-headline text-lg font-bold text-on-surface mb-4">Temp. 24h (°C)</h3>
+<div class="h-32 flex items-end gap-1 relative">
+<!-- Gráfico de barras CSS simplificado para representar tendencias -->
+<div class="w-full bg-primary/10 h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-primary/10 h-[65%] rounded-t-sm"></div>
+<div class="w-full bg-primary/20 h-[75%] rounded-t-sm"></div>
+<div class="w-full bg-primary/30 h-[85%] rounded-t-sm"></div>
+<div class="w-full bg-primary/40 h-[80%] rounded-t-sm"></div>
+<div class="w-full bg-primary/60 h-[70%] rounded-t-sm border-t-2 border-primary"></div>
+<div class="w-full bg-primary/40 h-[65%] rounded-t-sm"></div>
+<div class="w-full bg-primary/20 h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-primary/10 h-[55%] rounded-t-sm"></div>
+<div class="w-full bg-primary/30 h-[70%] rounded-t-sm"></div>
+<div class="w-full bg-primary/50 h-[85%] rounded-t-sm"></div>
+<div class="w-full bg-primary/70 h-[90%] rounded-t-sm border-t-2 border-primary"></div>
+<!-- Marcador de valor actual -->
+<div class="absolute top-0 right-0 bg-primary px-2 py-1 rounded text-[10px] font-bold text-on-primary">Actual: 24.5°C</div>
+</div>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<span>00:00</span>
+<span>12:00</span>
+<span>AHORA</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Cuadrícula de Resumen Ambiental -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col gap-6">
+<div>
+<h3 class="font-headline text-2xl font-extrabold">Estabilidad Atmosférica</h3>
+<p class="font-label text-sm text-on-surface-variant">Análisis comparativo de controles ambientales.</p>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-headline text-sm font-bold">
+<span>Niveles de CO2</span>
+<span>1200 PPM</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[75%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-headline text-sm font-bold">
+<span>Velocidad Flujo de Aire</span>
+<span>1.2 m/s</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[45%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-headline text-sm font-bold">
+<span>Intensidad Lumínica (PPFD)</span>
+<span>850 μmol/m²/s</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden min-h-[300px]">
+<img alt="Tecnología de invernadero" class="absolute inset-0 w-full h-full object-cover" data-alt="modern industrial cannabis greenhouse with purple and blue LED grow lights reflecting off steel structural supports and vibrant green plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBogqEiKBFkDtL4Z8lzs1yZ7hbG5TK9YxkFCRU5UC8FrPIow0t2Fp50bKU1h8hEQ1kjTkrjhvLiF2csLI9wTekwXdmRN7_WcNPk32Bi8BtR9fS6tslZoHMV_LfadWQpRVUXA4USRj-4CIWzn4S-iXA2pz489jME4xyj0aJVcDQnkG0SNZ--UttSSHeTeHNdxW8-3thErIAqJ3fpY6TjVZHXasqva0Fc6-Sf9gvnDgACBCrrnbclmmCG90sXiDDAGJgjvWJu46D-odQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-8">
+<h4 class="font-headline text-2xl font-bold text-on-primary">Transmisión en Vivo del Lab</h4>
+<p class="font-label text-on-primary/80 text-sm mt-2">Zona C - Seguimiento de Fase Vegetativa Activo</p>
+<button class="mt-4 self-start bg-on-primary text-primary px-6 py-2 rounded-xl font-headline font-bold text-sm shadow-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="videocam">videocam</span>
+                            Expandir Transmisión
+                        </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Integración de Pie de Página -->
+<footer class="mt-auto flex justify-between items-center px-8 py-4 w-full bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+<div class="font-inter text-xs text-zinc-500">
+                © 2024 Botanical Laboratory Systems
+            </div>
+<div class="flex gap-6">
+<a class="font-inter text-xs text-zinc-500 no-underline hover:text-emerald-600 opacity-80 hover:opacity-100 transition-all" href="#">Estado del Sistema</a>
+<a class="font-inter text-xs text-zinc-500 no-underline hover:text-emerald-600 opacity-80 hover:opacity-100 transition-all" href="#">Registros de Mantenimiento</a>
+<a class="font-inter text-xs text-zinc-500 no-underline hover:text-emerald-600 opacity-80 hover:opacity-100 transition-all" href="#">Política de Privacidad</a>
+</div>
+</footer>
+</main>
+</body></html>

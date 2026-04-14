@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monitoreo de Sala de Producción | Laboratorio Botánico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#0d631b",
+                    "on-secondary-fixed-variant": "#374b43",
+                    "on-primary-fixed": "#002204",
+                    "outline-variant": "#bfcaba",
+                    "surface-dim": "#d8dad9",
+                    "on-secondary-container": "#52675e",
+                    "inverse-surface": "#2e3130",
+                    "secondary-fixed": "#d1e8dd",
+                    "background": "#f8faf8",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e1e3e1",
+                    "surface": "#f8faf8",
+                    "primary-container": "#2e7d32",
+                    "on-tertiary-fixed": "#2e150b",
+                    "tertiary-fixed": "#ffdbcf",
+                    "surface-container": "#eceeec",
+                    "inverse-primary": "#88d982",
+                    "on-tertiary-container": "#ffeee8",
+                    "surface-bright": "#f8faf8",
+                    "tertiary-fixed-dim": "#ebbcac",
+                    "primary-fixed": "#a3f69c",
+                    "surface-container-highest": "#e1e3e1",
+                    "secondary-fixed-dim": "#b5ccc1",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#707a6c",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1b",
+                    "on-primary-container": "#cbffc2",
+                    "tertiary-container": "#8b6557",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f2f4f2",
+                    "tertiary": "#704d40",
+                    "surface-tint": "#1b6d24",
+                    "on-surface-variant": "#40493d",
+                    "on-secondary-fixed": "#0b1f18",
+                    "on-tertiary-fixed-variant": "#603f33",
+                    "secondary-container": "#cee5da",
+                    "inverse-on-surface": "#eff1ef",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "on-primary-fixed-variant": "#005312",
+                    "surface-container-high": "#e6e9e7",
+                    "secondary": "#4e635a",
+                    "on-surface": "#191c1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .custom-gradient-btn {
+            background: linear-gradient(to bottom, #0d631b, #2e7d32);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-zinc-50 dark:bg-zinc-950 py-8 px-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="font-black text-emerald-900 dark:text-emerald-50 text-xl tracking-tight">Laboratorio Botánico</h1>
+<p class="font-manrope uppercase tracking-wider text-[10px] text-zinc-500 mt-1">Instalación Alpha</p>
+</div>
+<nav class="flex flex-col space-y-1 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-manrope uppercase tracking-wider text-xs transition-all duration-200 ease-in-out text-zinc-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Panel de Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-manrope uppercase tracking-wider text-xs transition-all duration-200 ease-in-out text-zinc-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined" data-icon="Potted_plant">potted_plant</span>
+<span>Sala de Clones</span>
+</a>
+<!-- Active State: Production Room -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-manrope uppercase tracking-wider text-xs transition-all duration-200 ease-in-out text-emerald-900 dark:text-emerald-400 font-bold border-r-4 border-emerald-700 bg-zinc-100 dark:bg-zinc-900" href="#">
+<span class="material-symbols-outlined" data-icon="agriculture" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span>Sala de Producción</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-manrope uppercase tracking-wider text-xs transition-all duration-200 ease-in-out text-zinc-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Almacén/Bodega</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 flex flex-col space-y-1">
+<button class="mb-4 mx-2 custom-gradient-btn text-white py-3 px-4 rounded-xl font-headline font-bold text-sm shadow-md active:scale-95 transition-transform">
+                Acciones Rápidas
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope uppercase tracking-wider text-xs text-zinc-600 dark:text-zinc-400 hover:text-emerald-600" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span>Soporte</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope uppercase tracking-wider text-xs text-zinc-600 dark:text-zinc-400 hover:text-emerald-600" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+<span>Registros</span>
+</a>
+</div>
+</aside>
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-6 h-16 w-full bg-emerald-50 dark:bg-zinc-900 shadow-sm sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="font-manrope font-semibold text-emerald-900 dark:text-emerald-400 text-lg">Sala de Producción 01</span>
+<span class="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-container text-on-primary-container uppercase tracking-widest">
+                    Sistemas Normales
+                </span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-center gap-2 text-emerald-700 font-bold font-manrope">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+</div>
+<div class="flex items-center gap-2 text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors p-2 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-zinc-200">
+<img alt="Perfil de usuario" data-alt="Close-up portrait of a professional cultivation technician wearing a clean lab coat and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAztyQymwlqiD1EBvGDDKTR-tJzENaY_UGH7HqMHUPoRvKiqqWe7FGGOiCeRPmV1whNzk9NjqCycjJb1rif5ISdgiTsQNcNzJAhGcMJWLMTHSETePkFLhCTuHyJt780gfpDcNpBTAeNT-C78yTIhQT2G0IsQd6A2gEb5Dfx5Yo1qvWu32xmNelNocyCbRv9XgIKGdw4VmYTnUJJ5dFX84VemWvgdOvhAvXxFh6IkamwtkFdDsIYtK4YkaopK4joZE4JKES9TSQTs7g"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-6 md:p-10 space-y-8 max-w-[1600px] mx-auto w-full">
+<!-- Bento Grid - KPIs -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- CO2 Level -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between h-48 group hover:bg-emerald-50/30 transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label text-[10px] font-bold uppercase tracking-[0.05em] mb-1">Atmósfera</p>
+<h3 class="font-headline font-bold text-lg text-primary">Niveles de CO2</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors" data-icon="air">air</span>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-headline font-extrabold text-on-surface">1,250</span>
+<span class="text-on-surface-variant font-label font-medium text-sm">PPM</span>
+</div>
+<p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                            Saturación óptima
+                        </p>
+</div>
+</div>
+<!-- Light PPFD -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between h-48 group hover:bg-emerald-50/30 transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label text-[10px] font-bold uppercase tracking-[0.05em] mb-1">Fotosíntesis</p>
+<h3 class="font-headline font-bold text-lg text-primary">Intensidad</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors" data-icon="wb_sunny">wb_sunny</span>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-headline font-extrabold text-on-surface">940</span>
+<span class="text-on-surface-variant font-label font-medium text-sm">PPFD</span>
+</div>
+<p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                            Pico de curva de floración
+                        </p>
+</div>
+</div>
+<!-- VPD -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between h-48 group hover:bg-emerald-50/30 transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label text-[10px] font-bold uppercase tracking-[0.05em] mb-1">Transpiración</p>
+<h3 class="font-headline font-bold text-lg text-primary">VPD</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-headline font-extrabold text-on-surface">1.25</span>
+<span class="text-on-surface-variant font-label font-medium text-sm">kPa</span>
+</div>
+<p class="text-xs text-amber-600 font-medium flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                            Levemente bajo - ajustando ventiladores
+                        </p>
+</div>
+</div>
+<!-- Soil Moisture -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between h-48 group hover:bg-tertiary-container/10 transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label text-[10px] font-bold uppercase tracking-[0.05em] mb-1">Sustrato</p>
+<h3 class="font-headline font-bold text-lg text-tertiary">Humedad</h3>
+</div>
+<span class="material-symbols-outlined text-tertiary/40 group-hover:text-tertiary transition-colors" data-icon="sensors">sensors</span>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-headline font-extrabold text-on-surface">42.8</span>
+<span class="text-on-surface-variant font-label font-medium text-sm">%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-3 overflow-hidden">
+<div class="bg-tertiary h-full w-[42.8%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Charts and Monitoring Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Optimization Charts -->
+<div class="lg:col-span-2 space-y-8">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline font-bold text-xl text-on-surface">Optimización de VPD y CO2</h2>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-lowest rounded-lg text-xs font-bold text-primary shadow-sm">24H</button>
+<button class="px-3 py-1 bg-transparent text-zinc-400 text-xs font-bold hover:text-on-surface">7D</button>
+<button class="px-3 py-1 bg-transparent text-zinc-400 text-xs font-bold hover:text-on-surface">30D</button>
+</div>
+</div>
+<!-- Simulated Chart Canvas -->
+<div class="relative h-64 w-full">
+<svg class="w-full h-full" viewbox="0 0 800 240">
+<!-- Grid Lines -->
+<line stroke="#eceeec" stroke-width="1" x1="0" x2="800" y1="40" y2="40"></line>
+<line stroke="#eceeec" stroke-width="1" x1="0" x2="800" y1="120" y2="120"></line>
+<line stroke="#eceeec" stroke-width="1" x1="0" x2="800" y1="200" y2="200"></line>
+<!-- VPD Line (Primary Color) -->
+<path d="M0,180 Q100,160 200,170 T400,140 T600,120 T800,130" fill="none" stroke="#0d631b" stroke-linecap="round" stroke-width="3"></path>
+<!-- CO2 Line (Secondary Color) -->
+<path d="M0,80 Q100,100 200,90 T400,110 T600,95 T800,100" fill="none" stroke="#4e635a" stroke-dasharray="8,4" stroke-linecap="round" stroke-width="2"></path>
+<!-- Interaction Point -->
+<circle cx="600" cy="120" fill="#0d631b" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+<!-- Hover Detail Box (Editorial Style) -->
+<div class="absolute top-[80px] left-[610px] glass-effect p-3 rounded-lg shadow-xl border border-outline-variant/20 z-10 w-40">
+<p class="font-label text-[10px] font-bold uppercase text-on-surface-variant mb-1">Datos en Vivo</p>
+<div class="flex justify-between items-center text-sm font-headline font-bold">
+<span>VPD</span>
+<span class="text-primary">1.25 kPa</span>
+</div>
+<div class="flex justify-between items-center text-sm font-headline font-bold mt-1">
+<span>CO2</span>
+<span class="text-secondary">1140 PPM</span>
+</div>
+</div>
+</div>
+<div class="flex justify-start gap-8 mt-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs font-semibold text-on-surface-variant">Déficit de Presión de Vapor</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary border border-dashed border-white"></div>
+<span class="text-xs font-semibold text-on-surface-variant">Saturación de Carbono</span>
+</div>
+</div>
+</div>
+<!-- Irrigation & Feeding Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<h3 class="font-headline font-bold text-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="opacity">opacity</span>
+                                Estado de Fertirriego
+                            </h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface-variant">Nivel de pH</span>
+<span class="text-lg font-bold font-headline">6.2 <span class="text-xs font-normal opacity-60">pH</span></span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface-variant">CE (Conductividad)</span>
+<span class="text-lg font-bold font-headline">2.4 <span class="text-xs font-normal opacity-60">mS/cm</span></span>
+</div>
+<div class="pt-4 border-t border-surface-container">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-on-surface-variant mb-2">
+<span>Último Ciclo</span>
+<span>hace 2h 14m</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full">
+<div class="bg-primary h-full w-[85%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+<h3 class="font-headline font-bold text-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+                                Controles Remotos
+                            </h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-primary text-white rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Regar Ahora</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container-low text-on-surface-variant rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="mode_fan">mode_fan</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Renovar Aire</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Current Strains -->
+<div class="space-y-6">
+<div class="bg-surface-container-highest p-6 rounded-xl h-full">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline font-extrabold text-lg text-emerald-900">Floración Actual</h3>
+<span class="material-symbols-outlined text-emerald-900" data-icon="filter_vintage">filter_vintage</span>
+</div>
+<div class="space-y-4">
+<!-- Strain Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm group hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Cepa Blueberry Kush" data-alt="Vibrant close-up of a maturing cannabis flower with orange pistils and white trichomes on green leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUoeJ8x2xZEAzaUt9Fpeqawy88uUY1w7_lP1JgCRcydpmhWsVdFvgyn2RgRWe1iMeT1MJHZvOGefBn1VouQhuHsCY_lvxivTYoSrQK7DPkHJRtSEkmCGsBRnBMrwICSawb1c3cpQbT4nAehJe75G9UgHZ7ZTJouNF3SxKZkQHYJY45B8DBLB6LI1_YF4GbLria4lJFy-6AaTnuwCLbNQ2R7Gdb6zAAUi8Ucg7fiUZbR0NzKb5SoPzZ9vivQzzQlkVEpC-xWf2eXbQ"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-primary font-headline">GH-004</span>
+<span class="text-[10px] font-bold text-on-surface-variant">FLORECIENDO</span>
+</div>
+<h4 class="font-headline font-bold text-sm text-on-surface">Blueberry Kush</h4>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Cosecha en</span>
+<span class="text-md font-extrabold text-on-surface">14 Días</span>
+</div>
+<div class="h-8 w-8 rounded-full border-2 border-primary-fixed flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">82%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Strain Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm group hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Cepa Sour Diesel" data-alt="Dense crystalline cannabis flower structure with deep green and purple hues in professional cultivation lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkHFt9nQFjFGqP_n2GJFBelXU9pM8AckjXfB2xgTdPoNXalnf51_sC2tJUwqV1ZhQ44KFH-busTcqVLZIqV-rXuXLTKtKQ1k-L8l6TifgehRzeuRwXJJc_4NASqNrva5TYDNRuEjz5bQebDzZXAmcspab9282C6uLAdmcJfPPLfNYnl69tHGKYaEhNDUKR4mR3-sw6rewxDwipuGjhChzdgcJOL4SblhUtyBkfosMCujozYQ_Iqmdn7OilFCWvIXEuiwI_FlxNwuY"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-tertiary font-headline">GH-009</span>
+<span class="text-[10px] font-bold text-on-surface-variant">MADURANDO</span>
+</div>
+<h4 class="font-headline font-bold text-sm text-on-surface">Sour Diesel</h4>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Cosecha en</span>
+<span class="text-md font-extrabold text-on-surface">4 Días</span>
+</div>
+<div class="h-8 w-8 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">96%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Strain Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm group hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Cepa White Widow" data-alt="Young bright green cannabis leaves under soft white light in an indoor growth facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf5wtJ8o94m1CcSG5xiC0jxmK81wO54Ju9qYsvoDLfxat8eGTLaMhdhZi5Eo2YlXjATjiY57RFaLRNhzUSO0ZBJ1qlqTRFN1cIaSJKa19tOHmztvMLVk2Fj2eJKcAbQ68KExR_wyHCyr0VhrRJUkuVp-en6ngfhoKubKwsTNWnjhxMJtVTnDaHnzuzeIvPR9KpsIKFKOplfv63kkdxGQV0J2e9_QTUO9jh5er9o0UJl8lneP3UYbRsJ5bh3THfk5KCnUsHQh-I06U"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-secondary font-headline">GH-012</span>
+<span class="text-[10px] font-bold text-on-surface-variant">FLORECIENDO</span>
+</div>
+<h4 class="font-headline font-bold text-sm text-on-surface">White Widow</h4>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Cosecha en</span>
+<span class="text-md font-extrabold text-on-surface">32 Días</span>
+</div>
+<div class="h-8 w-8 rounded-full border-2 border-zinc-200 flex items-center justify-center">
+<span class="text-[10px] font-black text-zinc-500">45%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-emerald-900/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-emerald-900 hover:bg-emerald-900 hover:text-white transition-colors duration-200">
+                            Descargar Predicción de Cosecha
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="flex justify-between items-center px-8 py-4 w-full bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 mt-auto">
+<span class="font-inter text-xs text-zinc-500">© 2024 Botanical Laboratory Systems</span>
+<div class="flex gap-6">
+<a class="font-inter text-xs text-zinc-500 no-underline hover:text-emerald-600 opacity-80 hover:opacity-100 transition-opacity" href="#">Estado del Sistema</a>
+<a class="font-inter text-xs text-zinc-500 no-underline hover:text-emerald-600 opacity-80 hover:opacity-100 transition-opacity" href="#">Registros de Mantenimiento</a>
+<a class="font-inter text-xs text-zinc-500 no-underline hover:text-emerald-600 opacity-80 hover:opacity-100 transition-opacity" href="#">Política de Privacidad</a>
+</div>
+</footer>
+</main>
+<!-- FAB for Quick Actions -->
+<button class="fixed bottom-8 right-8 w-14 h-14 rounded-full custom-gradient-btn text-white flex items-center justify-center shadow-[0_24px_40px_-4px_rgba(25,28,27,0.06)] active:scale-90 transition-transform md:hidden z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>
